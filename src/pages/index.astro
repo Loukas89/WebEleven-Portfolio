@@ -1,11 +1,19 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout lang="el" title="WebEleven Portfolio" description="Bilingual portfolio (EL/EN).">
+  <section class="py-16">
+    <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">WebEleven Portfolio</h1>
+    <p class="mt-4 max-w-2xl text-slate-700">Επίλεξε γλώσσα. Choose a language.</p>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a class="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800" href="/el/">
+        Ελληνικά
+      </a>
+      <a class="rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50" href="/en/">
+        English
+      </a>
+    </div>
+  </section>
+</BaseLayout>
