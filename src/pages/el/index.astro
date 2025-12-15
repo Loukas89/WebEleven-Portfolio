@@ -1,10 +1,66 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/Layout.astro";
+import Welcome from "../../components/Welcome.astro";
+import AboutCards from "../../components/AboutCards.svelte";
+import ProjectsShowcase from "../../components/ProjectsShowcase.svelte";
+import ContactSection from "../../components/ContactSection.svelte";
+import { ABOUT } from "../../data/about";
+
+const about = ABOUT.el;
 ---
 
-<BaseLayout lang="el" title="Λουκάς Θέος | Portfolio" description="Portfolio (EL).">
-  <section class="py-16">
-    <h1 class="text-4xl font-bold tracking-tight">Γεια, είμαι ο Λουκάς.</h1>
-    <p class="mt-4 max-w-2xl text-slate-700">Hero section με CTA θα το τελειώσουμε στο επόμενο βήμα.</p>
-  </section>
-</BaseLayout>
+<Layout
+  lang="el"
+  title="Λουκάς Θέος | Portfolio"
+  description="Δίγλωσσο portfolio με Astro + Svelte + Tailwind."
+>
+  <Welcome
+    title="Γεια σου, είμαι ο Λουκάς. Φτιάχνω σύγχρονα web experiences."
+    tagline="Responsive, δίγλωσσο (EL/EN), SEO-friendly. Καθαρό UI, ομαλό UX και σωστή δομή."
+    ctaPrimaryHref="#contact"
+    ctaPrimaryLabel="Επικοινωνία"
+    ctaSecondaryHref="#projects"
+    ctaSecondaryLabel="Projects"
+  />
+
+  <AboutCards
+    client:load
+    id="about"
+    title="Σχετικά"
+    subtitle="Σύντομη εικόνα: ποιος είμαι, πού θέλω να βρίσκομαι σε 5 χρόνια και τι μου άρεσε περισσότερο."
+    cards={about.cards}
+  />
+
+  <ProjectsShowcase
+    client:load
+    id="projects"
+    title="Projects"
+    subtitle="Επιλεγμένα projects. Φίλτρα, modal και καθαρό UX flow."
+    viewAllHref="/el/projects"
+    projects={[
+      {
+        title: "NFT Marketplace",
+        description: "Mint, listing και αγορά NFTs με καθαρό frontend + smart contract flow.",
+        tags: ["Web3", "React", "Solidity"],
+        href: "/el/projects",
+        details: "Wallet σύνδεση, metadata, listing, buying και feedback patterns στο UI."
+      },
+      {
+        title: "AI Pneumonia Detection",
+        description: "CNN μοντέλα + explainability (Grad-CAM) για ακτινογραφίες θώρακα.",
+        tags: ["Deep Learning", "Python", "XAI"],
+        href: "/el/projects",
+        details: "Έμφαση σε metrics, σύγκριση μοντέλων και explainable AI οπτικοποιήσεις."
+      }
+    ]}
+  />
+
+  <ContactSection
+    client:load
+    id="contact"
+    title="Επικοινωνία"
+    subtitle="Θες ένα site που δείχνει premium και είναι γρήγορο; Στείλε μου μήνυμα."
+    email="youremail@example.com"
+    location="Αθήνα, Ελλάδα"
+  />
+</Layout>

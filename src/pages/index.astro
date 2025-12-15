@@ -1,19 +1,17 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout lang="el" title="WebEleven Portfolio" description="Bilingual portfolio (EL/EN).">
-  <section class="py-16">
-    <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">WebEleven Portfolio</h1>
-    <p class="mt-4 max-w-2xl text-slate-700">Επίλεξε γλώσσα. Choose a language.</p>
-
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a class="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800" href="/el/">
-        Ελληνικά
-      </a>
-      <a class="rounded-xl border border-slate-200 px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50" href="/en/">
-        English
-      </a>
-    </div>
-  </section>
-</BaseLayout>
+<html lang="el">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content="0; url=./el/" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <p>
+      Redirecting… Αν δεν γίνει redirect:
+      <a href="./el/">Ελληνικά</a> | <a href="./en/">English</a>
+    </p>
+  </body>
+</html>

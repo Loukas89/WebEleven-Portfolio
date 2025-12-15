@@ -1,9 +1,15 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/Layout.astro";
+import ContactSection from "../../components/ContactSection.svelte";
 ---
-<BaseLayout lang="en" title="Contact | Portfolio" description="Contact page placeholder (EN).">
-  <section class="py-16">
-    <h1 class="text-3xl font-bold">Contact</h1>
-    <p class="mt-4 text-slate-700">Placeholder page (out of implementation scope).</p>
-  </section>
-</BaseLayout>
+
+<Layout lang="en" title="Contact | Loukas Theos" description="Contact page (assignment link page).">
+  <ContactSection
+    client:load
+    id="contact"
+    title="Contact"
+    subtitle="Drop a message and I’ll get back to you."
+    email="youremail@example.com"
+    location="Athens, Greece"
+  />
+</Layout>

@@ -1,10 +1,66 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/Layout.astro";
+import Welcome from "../../components/Welcome.astro";
+import AboutCards from "../../components/AboutCards.svelte";
+import ProjectsShowcase from "../../components/ProjectsShowcase.svelte";
+import ContactSection from "../../components/ContactSection.svelte";
+import { ABOUT } from "../../data/about";
+
+const about = ABOUT.en;
 ---
 
-<BaseLayout lang="en" title="Loukas Theos | Portfolio" description="Portfolio (EN).">
-  <section class="py-16">
-    <h1 class="text-4xl font-bold tracking-tight">Hi, I’m Loukas.</h1>
-    <p class="mt-4 max-w-2xl text-slate-700">Hero section with CTA will be completed next.</p>
-  </section>
-</BaseLayout>
+<Layout
+  lang="en"
+  title="Loukas Theos | Portfolio"
+  description="Bilingual portfolio with Astro + Svelte + Tailwind."
+>
+  <Welcome
+    title="Hi, I’m Loukas. I build modern web experiences."
+    tagline="Responsive, bilingual (EL/EN), SEO-friendly. Clean UI, smooth UX, and sharp structure."
+    ctaPrimaryHref="#contact"
+    ctaPrimaryLabel="Contact"
+    ctaSecondaryHref="#projects"
+    ctaSecondaryLabel="Projects"
+  />
+
+  <AboutCards
+    client:load
+    id="about"
+    title="About"
+    subtitle="A quick snapshot: who I am, where I want to be in 5 years, and what I enjoyed most."
+    cards={about.cards}
+  />
+
+  <ProjectsShowcase
+    client:load
+    id="projects"
+    title="Projects"
+    subtitle="Selected work. Use filters, open a modal, keep the UX clean."
+    viewAllHref="/en/projects"
+    projects={[
+      {
+        title: "NFT Marketplace",
+        description: "Mint, list, and buy NFTs with a clean frontend + smart contract flow.",
+        tags: ["Web3", "React", "Solidity"],
+        href: "/en/projects",
+        details: "Includes wallet connection, metadata, listing, buying, and UI feedback patterns."
+      },
+      {
+        title: "AI Pneumonia Detection",
+        description: "CNN models + explainability (Grad-CAM) for chest X-ray classification.",
+        tags: ["Deep Learning", "Python", "XAI"],
+        href: "/en/projects",
+        details: "Focus on evaluation metrics, model comparison, and explainable AI visualization."
+      }
+    ]}
+  />
+
+  <ContactSection
+    client:load
+    id="contact"
+    title="Contact"
+    subtitle="Want a site that looks premium and feels fast? Send me a message."
+    email="youremail@example.com"
+    location="Athens, Greece"
+  />
+</Layout>
