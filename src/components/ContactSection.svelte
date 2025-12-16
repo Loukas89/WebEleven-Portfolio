@@ -2,7 +2,7 @@
   export let id: string = "contact";
   export let title: string = "Contact";
   export let subtitle: string = "";
-  export let email: string = "youremail@example.com";
+  export let email: string = "loukas.theos@outlook.com";
   export let location: string = "Athens, Greece";
 
   // UI-only (no real submit)
@@ -44,9 +44,9 @@
       </div>
 
       <div class="mt-8 glass p-6 reveal" data-reveal data-reveal-delay="320" data-reveal-once="true">
-        <h3 class="text-base font-semibold text-white/90">Quick note</h3>
+        <h3 class="text-base font-semibold text-white/90">Behind the scenes</h3>
         <p class="mt-2 text-sm leading-relaxed text-white/75">
-          This form is UI-only for the assignment. Later you can wire it to Formspree, Netlify Forms, or an API route.
+          This contact form is currently “in preview mode”. For a real message, email is the direct line.
         </p>
       </div>
     </div>
@@ -95,7 +95,7 @@
         </div>
 
         <p class="text-xs text-white/45">
-          UI only. No backend required for the assignment.
+          I usually reply within 24 hours.
         </p>
       </div>
     </form>

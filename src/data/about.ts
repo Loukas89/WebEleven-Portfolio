@@ -9,17 +9,17 @@ export const ABOUT = {
     cards: [
       {
         title: "Ποιος είμαι",
-        body: "Απόφοιτος Πληροφορικής, με έμφαση στο σύγχρονο web development και πειθαρχία στο UI/UX.",
-        icon: "🧠"
+        body: " Ονομάζομαι Λουκάς και είμαι 36 ετών. Απόφοιτος Πληροφορικής και μαθητής μεταπτυχιακού προγράμματος με θέμα την Τεχνητή Νοημοσύνη.",
+        icon: "👋"
       },
       {
         title: "Σε 5 χρόνια",
-        body: "Να δουλεύω σε προϊόντα με αντίκτυπο ως full-stack engineer, συνδυάζοντας αισθητική και αρχιτεκτονική.",
+        body: "Θα ήθελα να είμαι senior Full Stack | AI Engineer και να εμβαθύνω τις γνώσεις μου όσο το δυνατόν περισσοτερο.",
         icon: "🚀"
       },
       {
-        title: "Τι μου άρεσε περισσότερο",
-        body: "Το να μετατρέπω απαιτήσεις σε καθαρές αποφάσεις: δομή, ιεραρχία, κίνηση και σαφήνεια.",
+        title: "Τι μου άρεσε περισσότερο στη συνέντευξη",
+        body: "Η συνομιλία μου με νέους ανθρώπους με εξειδίκευση στον τομέα και πλάνο. Επίσης η σιγουριά που εμπνέει ο λόγος τους.",
         icon: "✨"
       }
     ] as AboutCard[]
@@ -28,17 +28,17 @@ export const ABOUT = {
     cards: [
       {
         title: "Who I am",
-        body: "Computer Science graduate, focused on modern web development with strong UI/UX discipline.",
-        icon: "🧠"
+        body: "My name is Loukas and I am 36 years old. I am a Computer Science graduate and a MSc student specializing in Artificial Intelligence.",
+        icon: "👋"
       },
       {
         title: "In 5 years",
-        body: "Building impactful products as a full-stack engineer, combining design sense with solid architecture.",
+        body: "I would like to be a Senior Full Stack | AI Engineer and deepen my knowledge as much as possible.",
         icon: "🚀"
       },
       {
-        title: "What I enjoyed most",
-        body: "Turning requirements into clean interface decisions: structure, hierarchy, motion, clarity.",
+        title: "What I liked most about the interview",
+        body: "My conversation with young professionals who have expertise in the field and a clear plan. I also liked the confidence their way of speaking inspires.",
         icon: "✨"
       }
     ] as AboutCard[]

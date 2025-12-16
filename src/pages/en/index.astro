@@ -12,11 +12,11 @@ const about = ABOUT.en;
 <Layout
   lang="en"
   title="Loukas Theos | Portfolio"
-  description="Bilingual portfolio with Astro + Svelte + Tailwind."
+  description="Portfolio for WebEleven with Astro + Svelte + Tailwind."
 >
  <Welcome
   title="Hi, I’m Loukas. I build modern web experiences."
-  tagline="Responsive, bilingual (EL/EN), SEO-friendly. Clean UI, smooth UX, and sharp structure."
+  tagline="Full Stack Developer | BSc Computer Science | MSc Artificial Intelligence & Machine Learning Student"
   ctaPrimaryHref="#contact"
   ctaPrimaryLabel="Contact"
   ctaSecondaryHref="/Loukas_Theos_CV_2025.pdf"
@@ -28,7 +28,7 @@ const about = ABOUT.en;
     client:load
     id="about"
     title="About"
-    subtitle="A quick snapshot: who I am, where I want to be in 5 years, and what I enjoyed most."
+    subtitle="A quick snapshot: who I am, where I want to be in 5 years, and what I liked most in interview."
     cards={about.cards}
   />
 
@@ -36,24 +36,39 @@ const about = ABOUT.en;
     client:load
     id="projects"
     title="Projects"
-    subtitle="Selected work. Use filters, open a modal, keep the UX clean."
+    subtitle="Here you’ll find some of my projects. You can use the filters to get more targeted results."
     viewAllHref="/en/projects"
     projects={[
-      {
-        title: "NFT Marketplace",
-        description: "Mint, list, and buy NFTs with a clean frontend + smart contract flow.",
-        tags: ["Web3", "React", "Solidity"],
-        href: "/en/projects",
-        details: "Includes wallet connection, metadata, listing, buying, and UI feedback patterns."
-      },
-      {
-        title: "AI Pneumonia Detection",
-        description: "CNN models + explainability (Grad-CAM) for chest X-ray classification.",
-        tags: ["Deep Learning", "Python", "XAI"],
-        href: "/en/projects",
-        details: "Focus on evaluation metrics, model comparison, and explainable AI visualization."
-      }
-    ]}
+  {
+    title: "NFT Marketplace",
+    description: "Mint, list, and buy NFTs with a clean frontend + smart contract flow.",
+    tags: ["Web3", "React", "Solidity"],
+    href: "/en/projects",
+    details: "Wallet connection, metadata handling, listing, buying, and clean UI feedback patterns."
+  },
+  {
+    title: "AI Pneumonia Detection",
+    description: "CNN models + explainability (Grad-CAM) for chest X-ray classification.",
+    tags: ["Deep Learning", "Python", "XAI"],
+    href: "/en/projects",
+    details: "Focus on evaluation metrics, model comparison, and explainable AI visualization."
+  },
+  {
+    title: "World Data Dashboard",
+    description: "Interactive dashboard with maps and charts for global insights.",
+    tags: ["JavaScript", "DataViz", "UI/UX"],
+    href: "/en/projects",
+    details: "Filters, responsive layout, and clean metric presentation with a UX-first approach."
+  },
+  {
+    title: "Smart Inventory Tracker",
+    description: "Mock web app for inventory tracking with search, filters, and reports.",
+    tags: ["Full Stack", "SQL", "Product"],
+    href: "/en/projects",
+    details: "CRUD flows, sorting/filtering, and a structure ready to connect to a real API later."
+  }
+]}
+
   />
 
   <ContactSection
@@ -61,7 +76,7 @@ const about = ABOUT.en;
     id="contact"
     title="Contact"
     subtitle="Want a site that looks premium and feels fast? Send me a message."
-    email="youremail@example.com"
+    email="loukas.theos@outlook.com"
     location="Athens, Greece"
   />
 </Layout>

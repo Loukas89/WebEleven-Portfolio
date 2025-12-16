@@ -10,5 +10,10 @@ export default defineConfig({
     ? "https://loukas89.github.io/WebEleven-Portfolio/"
     : "http://localhost:4321/",
   base: isProd ? "/WebEleven-Portfolio" : "",
+
+  devToolbar: {
+    enabled: false
+  },
+
   integrations: [svelte(), tailwind(), sitemap()]
 });

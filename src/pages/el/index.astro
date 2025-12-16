@@ -12,11 +12,11 @@ const about = ABOUT.el;
 <Layout
   lang="el"
   title="Λουκάς Θέος | Portfolio"
-  description="Δίγλωσσο portfolio με Astro + Svelte + Tailwind."
+  description="Portfolio για WebEleven με Astro + Svelte + Tailwind."
 >
   <Welcome
   title="Γεια σου, είμαι ο Λουκάς. Φτιάχνω σύγχρονα web experiences."
-  tagline="Responsive, δίγλωσσο (EL/EN), SEO-friendly. Καθαρό UI, ομαλό UX και σωστή δομή."
+  tagline="Full Stack Developer | BSc Computer Science | MSc Artificial Intelligence & Machine Learning Student"
   ctaPrimaryHref="#contact"
   ctaPrimaryLabel="Επικοινωνία"
   ctaSecondaryHref="/Loukas_Theos_CV_2025.pdf"
@@ -27,8 +27,8 @@ const about = ABOUT.el;
   <AboutCards
     client:load
     id="about"
-    title="Σχετικά"
-    subtitle="Σύντομη εικόνα: ποιος είμαι, πού θέλω να βρίσκομαι σε 5 χρόνια και τι μου άρεσε περισσότερο."
+    title="Σχετικά με εμένα"
+    subtitle="Μία σύντομη εικόνα για το ποιος είμαι, πού θα ήθελα να βρίσκομαι σε 5 χρόνια από τώρα και τι μου άρεσε περισσότερο στη συνεντευξη."
     cards={about.cards}
   />
 
@@ -36,24 +36,39 @@ const about = ABOUT.el;
     client:load
     id="projects"
     title="Projects"
-    subtitle="Επιλεγμένα projects. Φίλτρα, modal και καθαρό UX flow."
+    subtitle="Εδώ θα βρείς μερικά από τα project μου. Μπορείς να φιλτράρεις για πιο στοχευμένα αποτελέσματα."
     viewAllHref="/el/projects"
     projects={[
-      {
-        title: "NFT Marketplace",
-        description: "Mint, listing και αγορά NFTs με καθαρό frontend + smart contract flow.",
-        tags: ["Web3", "React", "Solidity"],
-        href: "/el/projects",
-        details: "Wallet σύνδεση, metadata, listing, buying και feedback patterns στο UI."
-      },
-      {
-        title: "AI Pneumonia Detection",
-        description: "CNN μοντέλα + explainability (Grad-CAM) για ακτινογραφίες θώρακα.",
-        tags: ["Deep Learning", "Python", "XAI"],
-        href: "/el/projects",
-        details: "Έμφαση σε metrics, σύγκριση μοντέλων και explainable AI οπτικοποιήσεις."
-      }
-    ]}
+  {
+    title: "NFT Marketplace",
+    description: "Mint, listing και αγορά NFTs με καθαρό frontend + smart contract flow.",
+    tags: ["Web3", "React", "Solidity"],
+    href: "/el/projects",
+    details: "Wallet σύνδεση, metadata, listing, buying και feedback patterns στο UI."
+  },
+  {
+    title: "AI Pneumonia Detection",
+    description: "CNN μοντέλα + explainability (Grad-CAM) για ακτινογραφίες θώρακα.",
+    tags: ["Deep Learning", "Python", "XAI"],
+    href: "/el/projects",
+    details: "Έμφαση σε metrics, σύγκριση μοντέλων και explainable AI οπτικοποιήσεις."
+  },
+  {
+    title: "World Data Dashboard",
+    description: "Διαδραστικό dashboard με χάρτη και γραφήματα για παγκόσμια δεδομένα.",
+    tags: ["JavaScript", "DataViz", "UI/UX"],
+    href: "/el/projects",
+    details: "Filters, responsive layout, και καθαρή παρουσίαση metrics με έμφαση στην εμπειρία χρήστη."
+  },
+  {
+    title: "Smart Inventory Tracker",
+    description: "Mock web app για παρακολούθηση αποθεμάτων με αναζητήσεις και reports.",
+    tags: ["Full Stack", "SQL", "Product"],
+    href: "/el/projects",
+    details: "CRUD ροές, φιλτράρισμα/ταξινόμηση, και έτοιμη δομή για future API σύνδεση."
+  }
+]}
+
   />
 
   <ContactSection
@@ -61,7 +76,7 @@ const about = ABOUT.el;
     id="contact"
     title="Επικοινωνία"
     subtitle="Θες ένα site που δείχνει premium και είναι γρήγορο; Στείλε μου μήνυμα."
-    email="youremail@example.com"
+    email="loukas.theos@outlook.com"
     location="Αθήνα, Ελλάδα"
   />
 </Layout>

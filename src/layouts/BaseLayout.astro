@@ -73,7 +73,6 @@ const jsonLd = {
 
     <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
 
-    <!-- Enable reveal only when JS is available -->
     <script>
       document.documentElement.classList.add("js");
     </script>
@@ -96,7 +95,6 @@ const jsonLd = {
       <Footer lang={lang} />
     </div>
 
-    <!-- Scroll reveal observer -->
     <script is:inline>
       (() => {
         const reduceMotion =
@@ -106,7 +104,7 @@ const jsonLd = {
         const els = Array.from(document.querySelectorAll("[data-reveal]"));
         if (!els.length) return;
 
-        // If reduced motion: just show everything.
+       
         if (reduceMotion) {
           els.forEach((el) => el.classList.add("is-visible"));
           return;
