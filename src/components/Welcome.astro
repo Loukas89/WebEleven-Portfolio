@@ -1,19 +1,50 @@
 ---
-const { title, tagline, ctaPrimaryHref, ctaPrimaryLabel, ctaSecondaryHref, ctaSecondaryLabel } = Astro.props;
+import { withBase } from "../lib/site";
+
+type Props = {
+  title: string;
+  tagline: string;
+  ctaPrimaryHref: string;
+  ctaPrimaryLabel: string;
+  ctaSecondaryHref?: string;
+  ctaSecondaryLabel?: string;
+};
+
+const {
+  title,
+  tagline,
+  ctaPrimaryHref,
+  ctaPrimaryLabel,
+  ctaSecondaryHref,
+  ctaSecondaryLabel
+} = Astro.props as Props;
+
+const isPdf =
+  !!ctaSecondaryHref && ctaSecondaryHref.toLowerCase().endsWith(".pdf");
+
+// Make it base-safe for GH Pages later too
+const secondaryHref = ctaSecondaryHref ? withBase(ctaSecondaryHref) : "";
 ---
 
-<section class="py-16 sm:py-20">
-  <div class="glass-strong p-8 sm:p-10">
-    <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">
-      {title ?? "Modern web experiences, built clean."}
-    </h1>
-    <p class="mt-4 max-w-2xl text-sm text-white/75 sm:text-base">
-      {tagline ?? "Responsive, bilingual (EL/EN), SEO-friendly portfolio with a focus on UI/UX and performance."}
-    </p>
+<section class="relative isolate overflow-hidden py-16 sm:py-20 reveal" data-reveal data-reveal-delay="60">
+  <div class="relative z-10">
+    <div class="glass-strong p-8 sm:p-10">
+      <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">{title}</h1>
+      <p class="mt-4 max-w-2xl text-white/75">{tagline}</p>
 
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a class="btn-primary" href={ctaPrimaryHref ?? "#contact"}>{ctaPrimaryLabel ?? "Get in touch"}</a>
-      <a class="btn-ghost" href={ctaSecondaryHref ?? "#projects"}>{ctaSecondaryLabel ?? "See projects"}</a>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn-primary" href={ctaPrimaryHref}>{ctaPrimaryLabel}</a>
+
+        {ctaSecondaryHref && ctaSecondaryLabel && isPdf ? (
+          <a class="btn-ghost" href={secondaryHref} download>
+            {ctaSecondaryLabel}
+          </a>
+        ) : ctaSecondaryHref && ctaSecondaryLabel ? (
+          <a class="btn-ghost" href={secondaryHref}>
+            {ctaSecondaryLabel}
+          </a>
+        ) : null}
+      </div>
     </div>
   </div>
 </section>

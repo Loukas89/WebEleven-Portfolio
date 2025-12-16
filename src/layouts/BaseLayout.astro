@@ -25,8 +25,6 @@ const metaTitle = title ?? SITE.meta[lang].title;
 const metaDescription = description ?? SITE.meta[lang].description;
 
 const pathname = Astro.url.pathname;
-
-// Canonical πρέπει να περιλαμβάνει base. Αν δώσεις override, το κάνουμε withBase().
 const internalCanonicalPath = canonicalPathname ? withBase(canonicalPathname) : pathname;
 
 const canonical = absUrl(internalCanonicalPath);
@@ -56,10 +54,8 @@ const jsonLd = {
     <link rel="alternate" hreflang={lang === "en" ? "el" : "en"} href={alternate} />
     <link rel="alternate" hreflang="x-default" href={absUrl(withBase("/el/"))} />
 
-    <!-- ✅ Favicon (PNG) base-safe -->
     <link rel="icon" type="image/png" href={withBase("/favicon.png")} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:title" content={metaTitle} />
@@ -71,13 +67,16 @@ const jsonLd = {
       content={lang === "en" ? SITE.locales.el.ogLocale : SITE.locales.en.ogLocale}
     />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={metaTitle} />
     <meta name="twitter:description" content={metaDescription} />
 
-    <!-- JSON-LD -->
     <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+
+    <!-- Enable reveal only when JS is available -->
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
   </head>
 
   <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
@@ -96,5 +95,45 @@ const jsonLd = {
 
       <Footer lang={lang} />
     </div>
+
+    <!-- Scroll reveal observer -->
+    <script is:inline>
+      (() => {
+        const reduceMotion =
+          window.matchMedia &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        const els = Array.from(document.querySelectorAll("[data-reveal]"));
+        if (!els.length) return;
+
+        // If reduced motion: just show everything.
+        if (reduceMotion) {
+          els.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+
+              const el = entry.target;
+              const delay = Number(el.dataset.revealDelay ?? "0");
+              if (!Number.isNaN(delay) && delay > 0) {
+                el.style.setProperty("--reveal-delay", `${delay}ms`);
+              }
+
+              el.classList.add("is-visible");
+
+              const once = el.dataset.revealOnce !== "false";
+              if (once) io.unobserve(el);
+            });
+          },
+          { threshold: 0.06, rootMargin: "0px 0px -18% 0px" }
+        );
+
+        els.forEach((el) => io.observe(el));
+      })();
+    </script>
   </body>
 </html>

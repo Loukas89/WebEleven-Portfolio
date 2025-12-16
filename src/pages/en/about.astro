@@ -3,15 +3,21 @@ import Layout from "../../layouts/Layout.astro";
 import { withBase } from "../../lib/site";
 ---
 
-<Layout lang="en" title="About | Loukas Theos" description="About page (assignment link page).">
-  <section class="py-16">
+<Layout
+  lang="en"
+  title="About | Loukas Theos"
+  description="About page (not required to be fully implemented for the assignment)."
+>
+  <section class="py-16 reveal" data-reveal data-reveal-delay="140" data-reveal-once="true">
     <div class="glass-strong p-8 sm:p-10">
       <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">About</h1>
-      <p class="mt-4 text-white/75">
-        This page exists as a menu link for the assignment. The full content can be expanded later.
+      <p class="mt-4 max-w-2xl text-white/75">
+        This page exists as a menu link as requested by the assignment. The main content is presented on the Home page.
       </p>
-      <div class="mt-8">
-        <a class="btn-ghost" href={withBase("/en/")}>Back to Home</a>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn-primary" href={withBase("/en/")}>Back to Home</a>
+        <a class="btn-ghost" href={withBase("/en/#about")}>View About section</a>
       </div>
     </div>
   </section>

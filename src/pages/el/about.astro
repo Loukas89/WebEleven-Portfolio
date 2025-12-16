@@ -3,15 +3,21 @@ import Layout from "../../layouts/Layout.astro";
 import { withBase } from "../../lib/site";
 ---
 
-<Layout lang="el" title="Σχετικά | Λουκάς Θέος" description="Σελίδα Σχετικά (link στο menu για την εργασία).">
-  <section class="py-16">
+<Layout
+  lang="el"
+  title="Σχετικά | Λουκάς Θέος"
+  description="Σελίδα Σχετικά (δεν απαιτείται πλήρης υλοποίηση για την εργασία)."
+>
+  <section class="py-16 reveal" data-reveal data-reveal-delay="140" data-reveal-once="true">
     <div class="glass-strong p-8 sm:p-10">
       <h1 class="text-3xl font-bold tracking-tight sm:text-4xl">Σχετικά</h1>
-      <p class="mt-4 text-white/75">
-        Η σελίδα υπάρχει ως link στο menu για την εργασία. Το πλήρες περιεχόμενο μπορεί να προστεθεί αργότερα.
+      <p class="mt-4 max-w-2xl text-white/75">
+        Η σελίδα αυτή υπάρχει ως link στο menu, όπως ζητάει η εργασία. Το κύριο περιεχόμενο παρουσιάζεται στη Home.
       </p>
-      <div class="mt-8">
-        <a class="btn-ghost" href={withBase("/el/")}>Πίσω στην Αρχική</a>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn-primary" href={withBase("/el/")}>Πίσω στην Αρχική</a>
+        <a class="btn-ghost" href={withBase("/el/#about")}>Δες το About section</a>
       </div>
     </div>
   </section>

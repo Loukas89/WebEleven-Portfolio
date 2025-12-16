@@ -48,7 +48,13 @@
   });
 </script>
 
-<section id={id} class="py-16">
+<section
+  id={id}
+  class="py-16 reveal"
+  data-reveal
+  data-reveal-delay="160"
+  data-reveal-once="true"
+>
   <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
     <div>
       <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
@@ -60,7 +66,7 @@
     <a class="btn-ghost w-fit" href={viewAllHref}>View all</a>
   </div>
 
-  <div class="mt-6 flex flex-wrap gap-2">
+  <div class="mt-6 flex flex-wrap gap-2 reveal" data-reveal data-reveal-delay="260" data-reveal-once="true">
     {#each tags as t}
       <button
         type="button"
@@ -74,16 +80,20 @@
   </div>
 
   <div class="mt-8 grid gap-6 md:grid-cols-2">
-    {#each filtered as p}
+    {#each filtered as p, i}
       <button
         type="button"
-        class="glass group p-6 text-left transition hover:bg-white/10"
+        class="glass group p-6 text-left transition hover:bg-white/10 reveal"
+        data-reveal
+        data-reveal-delay={(320 + i * 120).toString()}
+        data-reveal-once="true"
         on:click={() => openModal(p)}
       >
         <div class="flex items-start justify-between gap-4">
           <h3 class="text-lg font-semibold tracking-tight">{p.title}</h3>
           <span class="text-white/50 group-hover:text-white/80" aria-hidden="true">↗</span>
         </div>
+
         <p class="mt-3 text-sm leading-relaxed text-white/80">{p.description}</p>
 
         {#if p.tags?.length}
@@ -99,7 +109,6 @@
 
   {#if open && active}
     <div class="modal" aria-hidden="false">
-      <!-- backdrop is a real button, so keyboard + a11y are satisfied -->
       <button class="modal__backdrop" type="button" aria-label="Close dialog" on:click={closeModal} />
 
       <div

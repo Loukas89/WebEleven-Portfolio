@@ -11,26 +11,45 @@
   export let cards: AboutCard[] = [];
 </script>
 
-<section id={id} class="py-16">
-  <div class="mb-8">
-    <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
-    {#if subtitle}
-      <p class="mt-2 max-w-2xl text-sm text-white/70">{subtitle}</p>
-    {/if}
+<section
+  id={id}
+  class="py-16 reveal"
+  data-reveal
+  data-reveal-delay="120"
+  data-reveal-once="true"
+>
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <h2 class="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
+      {#if subtitle}
+        <p class="mt-2 max-w-2xl text-sm text-white/70">{subtitle}</p>
+      {/if}
+    </div>
   </div>
 
-  <div class="grid gap-6 md:grid-cols-3">
-    {#each cards as c}
-      <article class="glass p-6">
-        <div class="mb-4 flex items-center gap-3">
-          {#if c.icon}
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10">
-              <span class="text-lg">{c.icon}</span>
-            </span>
-          {/if}
-          <h3 class="text-lg font-semibold tracking-tight">{c.title}</h3>
+  <div class="mt-8 grid gap-6 md:grid-cols-3">
+    {#each cards as c, i}
+      <article
+        class="glass group p-6 reveal"
+        data-reveal
+        data-reveal-delay={(220 + i * 120).toString()}
+        data-reveal-once="true"
+      >
+        <div class="flex items-start gap-4">
+          <div
+            class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10"
+            aria-hidden="true"
+          >
+            <span class="text-lg">{c.icon ?? "✨"}</span>
+          </div>
+
+          <div class="min-w-0">
+            <h3 class="text-lg font-semibold tracking-tight text-white/90 group-hover:text-white">
+              {c.title}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-white/75">{c.body}</p>
+          </div>
         </div>
-        <p class="text-sm leading-relaxed text-white/80">{c.body}</p>
       </article>
     {/each}
   </div>
