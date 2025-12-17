@@ -18,6 +18,7 @@
   let selectedTag: string = "All";
   let open = false;
   let active: Project | null = null;
+
   let lastFocus: Element | null = null;
   let dialogEl: HTMLDivElement | null = null;
 
@@ -109,7 +110,7 @@
 
   {#if open && active}
     <div class="modal" aria-hidden="false">
-      <button class="modal__backdrop" type="button" aria-label="Close dialog" on:click={closeModal} />
+      <button class="modal__backdrop" type="button" aria-label="Close dialog" on:click={closeModal}></button>
 
       <div
         class="modal__panel glass-strong"

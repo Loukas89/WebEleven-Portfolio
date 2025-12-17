@@ -1,22 +1,42 @@
 ---
+/*
+  Footer
+  - Το κάτω μέρος της σελίδας (copyright + λίγα links)
+  - Παίζει σωστά και σε EL/EN
+*/
 import { SITE, withBase, type Lang } from "../lib/site";
 
+// Παίρνουμε τη γλώσσα από το layout
 const { lang = "el" } = Astro.props as { lang?: Lang };
+
+// Μικρό helper για κείμενα EL/EN
 const t = (elText: string, enText: string) => (lang === "en" ? enText : elText);
 
+// Βάση για routes ανά γλώσσα
 const base = lang === "en" ? "/en" : "/el";
 ---
 
 <footer class="mt-16 border-t border-white/10">
   <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 sm:px-6 lg:px-8 md:flex-row md:items-center md:justify-between">
+    <!-- Copyright: βάζει αυτόματα το τρέχον έτος -->
     <p class="text-sm text-slate-300">
       © {new Date().getFullYear()} {t("Λουκάς Θέος", "Loukas Theos")}
     </p>
 
+    <!-- Μικρά “utility” links -->
     <div class="flex flex-wrap items-center gap-4 text-sm">
-      <a class="text-slate-300 hover:text-white" href={SITE.github} target="_blank" rel="noreferrer">GitHub</a>
-      <a class="text-slate-300 hover:text-white" href={withBase(`${base}/contact`)}>{t("Επικοινωνία", "Contact")}</a>
-      <a class="text-slate-300 hover:text-white" href={withBase(`${base}/`)}>{t("Αρχική", "Home")}</a>
+      <!-- GitHub link -->
+      <a class="text-slate-300 hover:text-white" href={SITE.github} target="_blank" rel="noreferrer">
+        GitHub
+      </a>
+
+      <!-- Links μέσα στο site -->
+      <a class="text-slate-300 hover:text-white" href={withBase(`${base}/contact`)}>
+        {t("Επικοινωνία", "Contact")}
+      </a>
+      <a class="text-slate-300 hover:text-white" href={withBase(`${base}/`)}>
+        {t("Αρχική", "Home")}
+      </a>
     </div>
   </div>
 </footer>

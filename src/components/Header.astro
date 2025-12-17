@@ -1,12 +1,26 @@
 ---
+/*
+  Header 
+  - Δείχνει logo + όνομα
+  - Menu links (Home / About / Projects / Contact)
+  - Switch γλώσσας (EL/EN)
+  - Mobile dropdown menu
+*/
 import { swapLang, withBase, type Lang } from "../lib/site";
 
+// Παίρνουμε τη γλώσσα από το layout (προεπιλογή: el)
 const { lang = "el" } = Astro.props as { lang?: Lang };
+
+// Το current path βοηθάει να κάνουμε highlight το active link
 const pathname = Astro.url.pathname;
 
+// Μικρή helper για κείμενα EL/EN
 const t = (elText: string, enText: string) => (lang === "en" ? enText : elText);
 
+// Βάση για routes ανά γλώσσα
 const base = lang === "en" ? "/en" : "/el";
+
+// Τα links του menu 
 const nav = [
   { href: withBase(`${base}/`), label: t("Αρχική", "Home") },
   { href: withBase(`${base}/about`), label: t("Σχετικά", "About") },
@@ -14,17 +28,22 @@ const nav = [
   { href: withBase(`${base}/contact`), label: t("Επικοινωνία", "Contact") }
 ];
 
+// Home link (ανά γλώσσα)
 const home = withBase(`${base}/`);
+
+// Link για αλλαγή γλώσσας (κρατάει το ίδιο page path)
 const otherLangPath = swapLang(pathname);
 const otherLangLabel = lang === "en" ? "Ελληνικά" : "English";
 
+// Για να τονίζουμε το active link στο menu
 const isActive = (href: string) => pathname === href || (href.endsWith("/") && pathname === href);
 ---
 
 <header id="top" class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/45 backdrop-blur-xl">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <!-- Logo + όνομα: πάει πάντα στο home της τρέχουσας γλώσσας -->
     <a href={home} class="inline-flex items-center gap-3">
-      
+      <!-- Το favicon logo -->
       <img
         src={withBase("/favicon.png")}
         alt=""
@@ -35,11 +54,13 @@ const isActive = (href: string) => pathname === href || (href.endsWith("/") && p
         decoding="async"
       />
 
+      <!-- Όνομα (EL/EN) -->
       <span class="text-sm font-semibold tracking-tight text-white/90 hover:text-white">
         {t("Λουκάς Θέος", "Loukas Theos")}
       </span>
     </a>
 
+    <!-- Desktop menu (κρύβεται σε mobile) -->
     <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
       {nav.map((item) => (
         <a
@@ -51,11 +72,15 @@ const isActive = (href: string) => pathname === href || (href.endsWith("/") && p
         </a>
       ))}
 
+      <!-- Αλλαγή γλώσσας -->
       <a class="btn-ghost" href={otherLangPath}>{otherLangLabel}</a>
     </nav>
 
+    <!-- Mobile menu (dropdown) -->
     <details class="md:hidden">
       <summary class="btn-ghost cursor-pointer list-none">{t("Μενού", "Menu")}</summary>
+
+      <!-- Το dropdown panel -->
       <div class="mt-3 w-[260px] rounded-2xl border border-white/10 bg-slate-950/80 p-3 backdrop-blur">
         <div class="flex flex-col gap-2">
           {nav.map((item) => (
@@ -66,6 +91,8 @@ const isActive = (href: string) => pathname === href || (href.endsWith("/") && p
               {item.label}
             </a>
           ))}
+
+          <!-- Αλλαγή γλώσσας και στο mobile -->
           <a class="rounded-xl px-3 py-2 text-sm text-white/80 hover:bg-white/5" href={otherLangPath}>
             {otherLangLabel}
           </a>

@@ -6,13 +6,13 @@ Portfolio site με **Astro + Svelte + Tailwind CSS**, σύμφωνα με τι�
 
 ## Χαρακτηριστικά
 
-- **Responsive** (mobile-first)
+- **Responsive**
 - **Δίγλωσσο** (Ελληνικά / Αγγλικά): `/el/` και `/en/`
 - **Home page sections** (όπως ζητάει η εργασία):
   1. Hero: τίτλος, tagline, call to action
   2. About: λίγα λόγια για εμένα, στόχος 5ετίας, τι μου άρεσε περισσότερο στη συνέντευξη
   3. Projects: διαδραστική παρουσίαση (filters + modal, με mock projects)
-  4. Contact: φόρμα επικοινωνίας (μόνο UI, δεν απαιτείται λειτουργικό backend)
+  4. Contact: φόρμα επικοινωνίας (μόνο UI, δεν απαιτείται backend)
 - **SEO friendly** (meta tags, canonical, hreflang)
 - **Sitemap** δημιουργείται στο build
 

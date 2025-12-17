@@ -1,4 +1,10 @@
 ---
+/*
+  Welcome (Hero section)
+  - Πρώτο section (Hero)
+  - Τίτλος, tagline, και 1-2 CTA buttons
+*/
+
 import { withBase } from "../lib/site";
 
 type Props = {
@@ -19,10 +25,11 @@ const {
   ctaSecondaryLabel
 } = Astro.props as Props;
 
-const isPdf =
-  !!ctaSecondaryHref && ctaSecondaryHref.toLowerCase().endsWith(".pdf");
+// Αν το secondary link είναι PDF, θέλουμε download
+const isPdf = !!ctaSecondaryHref && ctaSecondaryHref.toLowerCase().endsWith(".pdf");
 
-// Make it base-safe for GH Pages later too
+// Base-safe links (για GH Pages)
+const primaryHref = withBase(ctaPrimaryHref);
 const secondaryHref = ctaSecondaryHref ? withBase(ctaSecondaryHref) : "";
 ---
 
@@ -33,16 +40,18 @@ const secondaryHref = ctaSecondaryHref ? withBase(ctaSecondaryHref) : "";
       <p class="mt-4 max-w-2xl text-white/75">{tagline}</p>
 
       <div class="mt-8 flex flex-wrap gap-3">
-        <a class="btn-primary" href={ctaPrimaryHref}>{ctaPrimaryLabel}</a>
+        <a class="btn-primary" href={primaryHref}>{ctaPrimaryLabel}</a>
 
-        {ctaSecondaryHref && ctaSecondaryLabel && isPdf ? (
-          <a class="btn-ghost" href={secondaryHref} download>
-            {ctaSecondaryLabel}
-          </a>
-        ) : ctaSecondaryHref && ctaSecondaryLabel ? (
-          <a class="btn-ghost" href={secondaryHref}>
-            {ctaSecondaryLabel}
-          </a>
+        {ctaSecondaryHref && ctaSecondaryLabel ? (
+          isPdf ? (
+            <a class="btn-ghost" href={secondaryHref} download>
+              {ctaSecondaryLabel}
+            </a>
+          ) : (
+            <a class="btn-ghost" href={secondaryHref}>
+              {ctaSecondaryLabel}
+            </a>
+          )
         ) : null}
       </div>
     </div>
