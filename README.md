@@ -1,37 +1,68 @@
-# WebEleven Portfolio
+# WebEleven Portfolio (Astro)
 
-Portfolio website for the Web Developer assignment (Astro + TailwindCSS + Svelte).
+Portfolio site με **Astro + Svelte + Tailwind CSS**, σύμφωνα με τις απαιτήσεις της εργασίας.
 
-## Features (Assignment Requirements)
+---
 
-- Responsive layout (mobile / tablet / desktop)
-- Bilingual content (Greek / English)
-- Header with navigation + Footer
-- Home page sections:
-  1. Hero (title, tagline, CTA)
-  2. About (intro, 5-year goal, interview highlight)
-  3. Projects (interactive presentation)
-  4. Contact form (UI only)
-- About / Projects / Contact pages are included as navigation links (placeholders)
+## Χαρακτηριστικά
 
-## Tech Stack
+- **Responsive** (mobile-first)
+- **Δίγλωσσο** (Ελληνικά / Αγγλικά): `/el/` και `/en/`
+- **Home page sections** (όπως ζητάει η εργασία):
+  1. Hero: τίτλος, tagline, call to action
+  2. About: λίγα λόγια για εμένα, στόχος 5ετίας, τι μου άρεσε περισσότερο στη συνέντευξη
+  3. Projects: διαδραστική παρουσίαση (filters + modal, με mock projects)
+  4. Contact: φόρμα επικοινωνίας (μόνο UI, δεν απαιτείται λειτουργικό backend)
+- **SEO friendly** (meta tags, canonical, hreflang)
+- **Sitemap** δημιουργείται στο build
 
-- Astro
-- TailwindCSS
-- Svelte (for interactive components)
-- @astrojs/sitemap (sitemap generation)
+---
 
-## Getting Started
+## Προαπαιτούμενα
 
-### Requirements
+- **Node.js** (προτείνεται Node 18+, ιδανικά Node 20)
+- **npm**
 
-- Node.js (LTS recommended)
-- npm
+---
 
-### Install
+## 🧾 Οδηγίες εκτέλεσης (ενοποιημένα βήματα)
 
-Run from the project root:
+### 1 Εγκατάσταση dependencies
 
-```bash
+Στο terrminal στο root του project:
 npm install
-```
+
+### 2 Εκτέλεση σε development mode
+
+npm run dev
+
+### 3 Άνοιγμα στο browser
+
+Άνοιξε το URL που εμφανίζει το terminal (π.χ.):
+http://localhost:4321/
+Home σελίδες:
+Ελληνικά: http://localhost:4321/el/
+Αγγλικά: http://localhost:4321/en/
+Αν το port 4321 είναι πιασμένο, το Astro θα χρησιμοποιήσει άλλο (π.χ. 4322).
+
+### 4 Build (στατική παραγωγή)
+
+npm run build
+Το αποτέλεσμα δημιουργείται στον φάκελο:
+dist/
+
+🗺️ Sitemap
+Το sitemap δημιουργείται αυτόματα στο build και βρίσκεται στο:
+dist/sitemap-index.xml
+
+📄 CV Download
+Το βιογραφικό βρίσκεται στο:
+public/Loukas_Theos_CV_2025.pdf
+Το κουμπί Download CV στο Hero κατεβάζει αυτό το αρχείο.
+
+📁 Δομή Project (σημαντικοί φάκελοι)
+src/pages/ : routes (/, /el/, /en/ κλπ)
+src/components/ : components (Svelte/Astro)
+src/layouts/ : layout (Header/Footer)
+src/data/ : περιεχόμενο ( About cards)
+public/ : static αρχεία (favicon, pdf CV)
